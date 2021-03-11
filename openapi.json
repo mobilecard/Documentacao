@@ -1,0 +1,2085 @@
+{
+  "openapi": "3.0.1",
+  "paths": {
+    "/oauth/issue": {
+      "post": {
+        "operationId": "issue",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/subscribe": {
+      "post": {
+        "operationId": "subscribe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/market_lists/{storeDataId}": {
+      "post": {
+        "operationId": "verifyOnMarketLists",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/terrorists/{storeDataId}": {
+      "post": {
+        "operationId": "verifyOnTerroristsLists",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_validations/{storeDataId}": {
+      "post": {
+        "operationId": "saveDocumentValidations",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DocumentValidation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_validations/{storeDataId}/instructions": {
+      "get": {
+        "operationId": "getWrongDocumentsInstructionByStoreDataId",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_validations/{storeDataId}/wrong_documents": {
+      "get": {
+        "operationId": "findStoreDataWithWrongDocuments",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoreData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_info_validations/{storeDataId}": {
+      "post": {
+        "operationId": "validateDocumentInfo",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "risk_analist_username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "store_data_changed",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "bank_info_changed",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "owners_info_changed",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StoreData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/test_validation_flow": {
+      "post": {
+        "operationId": "initializeCustomerValidation",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/process/create": {
+      "post": {
+        "operationId": "createValidationProcess",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidationProcess"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/process/findList": {
+      "post": {
+        "operationId": "findStoreDataWithValidationProcess",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_authenticity": {
+      "post": {
+        "operationId": "saveDocumentAuthenticityValidations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DocumentAuthenticity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/spc_serasa": {
+      "post": {
+        "operationId": "saveSpcSerasaValidations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SpcSerasaValidation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/process/update": {
+      "post": {
+        "operationId": "updateValidationProcess",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidationProcess"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/process/{storeDataId}": {
+      "get": {
+        "operationId": "findValidationProcessByStoreDataId",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProcess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/approve_storedata/{storeDataId}": {
+      "post": {
+        "operationId": "approveStoreData",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_validations/{storeDataId}/conclude_resending_documents": {
+      "post": {
+        "operationId": "concludeResendingDocuments",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/{storeDataId}": {
+      "get": {
+        "operationId": "findDocumentValidationsByStoreDataId",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentValidation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_update_validation_process/save": {
+      "post": {
+        "operationId": "saveDocumentValidationUpdateProcess",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentUpdateValidationProcess"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_update_validations": {
+      "post": {
+        "operationId": "saveDocumentUpdateValidations",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "registeredBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isOwnerValidation",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DocumentUpdateValidation"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_update_validation_process": {
+      "get": {
+        "operationId": "findDocumentUpdateValidationProcess",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "processStatus",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OPEN",
+                "CLOSED"
+              ]
+            }
+          },
+          {
+            "name": "docType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CPF_FRENTE",
+                "CPF_VERSO",
+                "RG_FRENTE",
+                "RG_VERSO",
+                "CNH",
+                "ADDRESS_PROOF",
+                "BANKING_DOMICILE_PROOF",
+                "ACTIVITY_PROOF",
+                "RELATIONSHIP_PROOF",
+                "ASSOCIATION_ARTICLES",
+                "CNPJ_CARD",
+                "PEP",
+                "PROPOSTA_AFILIACAO_PAG1",
+                "PROPOSTA_AFILIACAO_PAG2",
+                "PROPOSTA_AFILIACAO_PAG3"
+              ]
+            }
+          },
+          {
+            "name": "isOwner",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentUpdateValidationProcess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/document_update_validation_process/list": {
+      "get": {
+        "operationId": "findOpenDocumentUpdateValidationProcesses",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentUpdateValidationProcess"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/failed_document_validations": {
+      "get": {
+        "operationId": "findFailedDocumentRequirementsByDocType",
+        "parameters": [
+          {
+            "name": "documentType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CPF_FRENTE",
+                "CPF_VERSO",
+                "RG_FRENTE",
+                "RG_VERSO",
+                "CNH",
+                "ADDRESS_PROOF",
+                "BANKING_DOMICILE_PROOF",
+                "ACTIVITY_PROOF",
+                "RELATIONSHIP_PROOF",
+                "ASSOCIATION_ARTICLES",
+                "CNPJ_CARD",
+                "PEP",
+                "PROPOSTA_AFILIACAO_PAG1",
+                "PROPOSTA_AFILIACAO_PAG2",
+                "PROPOSTA_AFILIACAO_PAG3"
+              ]
+            }
+          },
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "isOwnerValidation",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentRequirement"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/owners_failed_document_validations": {
+      "get": {
+        "operationId": "findFailedOwnersDocumentUpdateValidations",
+        "parameters": [
+          {
+            "name": "documentType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CPF_FRENTE",
+                "CPF_VERSO",
+                "RG_FRENTE",
+                "RG_VERSO",
+                "CNH",
+                "ADDRESS_PROOF",
+                "BANKING_DOMICILE_PROOF",
+                "ACTIVITY_PROOF",
+                "RELATIONSHIP_PROOF",
+                "ASSOCIATION_ARTICLES",
+                "CNPJ_CARD",
+                "PEP",
+                "PROPOSTA_AFILIACAO_PAG1",
+                "PROPOSTA_AFILIACAO_PAG2",
+                "PROPOSTA_AFILIACAO_PAG3"
+              ]
+            }
+          },
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentUpdateValidation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/owners_document_validations": {
+      "get": {
+        "operationId": "findLastOwnersDocumentUpdateValidations",
+        "parameters": [
+          {
+            "name": "documentType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CPF_FRENTE",
+                "CPF_VERSO",
+                "RG_FRENTE",
+                "RG_VERSO",
+                "CNH",
+                "ADDRESS_PROOF",
+                "BANKING_DOMICILE_PROOF",
+                "ACTIVITY_PROOF",
+                "RELATIONSHIP_PROOF",
+                "ASSOCIATION_ARTICLES",
+                "CNPJ_CARD",
+                "PEP",
+                "PROPOSTA_AFILIACAO_PAG1",
+                "PROPOSTA_AFILIACAO_PAG2",
+                "PROPOSTA_AFILIACAO_PAG3"
+              ]
+            }
+          },
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentUpdateValidation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/validations/pep_validation_process/save": {
+      "post": {
+        "operationId": "savePEPValidationResult",
+        "parameters": [
+          {
+            "name": "storeDataId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {}
+            }
+          }
+        }
+      }
+    },
+    "/customervalidation/risk_management/score": {
+      "post": {
+        "operationId": "calculateScore",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TokenResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tokenType": {
+            "type": "string"
+          }
+        }
+      },
+      "TokenRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "client_id": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "grant_type": {
+            "type": "string"
+          },
+          "idp": {
+            "type": "string"
+          }
+        }
+      },
+      "SubscriptionRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "client_id": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "grant_type": {
+            "type": "string"
+          },
+          "idp": {
+            "type": "string"
+          },
+          "profileData": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "DocumentValidation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "documentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "docRequirementName": {
+            "type": "string",
+            "enum": [
+              "TIPODOC",
+              "ORIGINAL",
+              "TITULAR",
+              "VALIDADE",
+              "RELACIONAMENTO",
+              "PROPRIETARIO",
+              "ASSINADO_LOJISTA",
+              "ASSINADO_REP_LOJISTA",
+              "RAMO_ATIVIDADE",
+              "DOC_ABERTO",
+              "SEM_NRO_CARTAO"
+            ]
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "registeredBy": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "addressName": {
+            "type": "string"
+          },
+          "addressType": {
+            "type": "string"
+          },
+          "addressNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "complement": {
+            "type": "string"
+          },
+          "neighborhood": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "formattedZipCode": {
+            "type": "string"
+          },
+          "fullAddressName": {
+            "type": "string"
+          },
+          "fullAddress": {
+            "type": "string"
+          }
+        }
+      },
+      "Bank": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "fullname": {
+            "type": "string"
+          },
+          "bankNumber": {
+            "type": "string"
+          },
+          "bankNumberVerifier": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "boolean"
+          },
+          "numberAndFullname": {
+            "type": "string"
+          },
+          "fullBankNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "BankBranch": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/Bank"
+          },
+          "name": {
+            "type": "string"
+          },
+          "branchNumber": {
+            "type": "string"
+          },
+          "branchNumberVerifier": {
+            "type": "string"
+          },
+          "fullBranchNumberFormat": {
+            "type": "string"
+          },
+          "fullBranchNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "BankInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "bankBranchId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "bankBranch": {
+            "$ref": "#/components/schemas/BankBranch"
+          },
+          "accountNumber": {
+            "type": "string"
+          },
+          "accountNumberVerifier": {
+            "type": "string"
+          },
+          "jointAccount": {
+            "type": "boolean"
+          },
+          "bankAccountHolder": {
+            "type": "string"
+          },
+          "bankAccountSecondHolder": {
+            "type": "string"
+          },
+          "currentAccount": {
+            "type": "boolean"
+          },
+          "wallet": {
+            "type": "string"
+          },
+          "accountCode": {
+            "type": "string"
+          },
+          "variation": {
+            "type": "string"
+          },
+          "operationNumber": {
+            "type": "string"
+          },
+          "roles": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BankInfoRole"
+            }
+          }
+        }
+      },
+      "BankInfoRole": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "roleName": {
+            "type": "string"
+          },
+          "banksInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BankInfo"
+            }
+          }
+        }
+      },
+      "LineOfBusiness": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          },
+          "allowed": {
+            "type": "boolean"
+          },
+          "transactionLimit": {
+            "type": "number"
+          },
+          "dailyLimit": {
+            "type": "number"
+          },
+          "monthlyLimit": {
+            "type": "number"
+          },
+          "gatewayAccountIdCardNotPresent": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "gatewayAccountIdCardPresent": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Money": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "object",
+            "properties": {
+              "currencyCode": {
+                "type": "string"
+              },
+              "defaultFractionDigits": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "numericCode": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "symbol": {
+                "type": "string"
+              }
+            }
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      },
+      "RegisterRequiredDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requiredDocumentType": {
+            "type": "string",
+            "enum": [
+              "CPF_FRENTE",
+              "CPF_VERSO",
+              "RG_FRENTE",
+              "RG_VERSO",
+              "CNH",
+              "ADDRESS_PROOF",
+              "BANKING_DOMICILE_PROOF",
+              "ACTIVITY_PROOF",
+              "RELATIONSHIP_PROOF",
+              "ASSOCIATION_ARTICLES",
+              "CNPJ_CARD",
+              "PEP",
+              "PROPOSTA_AFILIACAO_PAG1",
+              "PROPOSTA_AFILIACAO_PAG2",
+              "PROPOSTA_AFILIACAO_PAG3"
+            ]
+          },
+          "isRequiredToPf": {
+            "type": "boolean"
+          },
+          "isRequiredToPj": {
+            "type": "boolean"
+          },
+          "isRequiredToPjOwner": {
+            "type": "boolean"
+          },
+          "isRequiredToSalesRep": {
+            "type": "boolean"
+          },
+          "defaultFileName": {
+            "type": "string"
+          }
+        }
+      },
+      "StoreData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "storePJ": {
+            "type": "boolean"
+          },
+          "storePF": {
+            "type": "boolean"
+          },
+          "creditCartLimitValue": {
+            "type": "number"
+          },
+          "dailyCreditCardLimitValue": {
+            "type": "number"
+          },
+          "monthlyCreditCardLimitValue": {
+            "type": "number"
+          },
+          "lineOfBusiness": {
+            "$ref": "#/components/schemas/LineOfBusiness"
+          },
+          "lineOfBusinessId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "optionalPhone": {
+            "type": "string"
+          },
+          "primaryPhone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "limitTotalOfSalesPerMonth": {
+            "type": "number"
+          },
+          "bankInfo": {
+            "$ref": "#/components/schemas/BankInfo"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registeredBy": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "descriptionActivity": {
+            "type": "string"
+          },
+          "cardSalesAllowed": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statusBeforeBlockadeCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentStatusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentStatusBeforeBlockedCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StoreHistory"
+            }
+          },
+          "acceptedTermsDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taxesAndFees": {
+            "$ref": "#/components/schemas/TaxesAndFees"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "formattedPrimaryPhone": {
+            "type": "string"
+          },
+          "formattedOptionalPhone": {
+            "type": "string"
+          },
+          "formattedcreatedDate": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "scoreUpdateDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cpfCnpj": {
+            "type": "string"
+          },
+          "acquirerPEPAccepted": {
+            "type": "boolean"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StoreUploadedDocument"
+            }
+          },
+          "originOfRegister": {
+            "type": "string",
+            "enum": [
+              "WEB",
+              "SALES_REPRESENTATIVE"
+            ]
+          },
+          "salesRepId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "salesBlocked": {
+            "type": "boolean"
+          },
+          "openingDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "LEAD_PRE_QUALIFICADO",
+              "LEAD_QUALIFICADO_INCOMPLETO",
+              "DADOS_SOCIETARIOS_COMPLETOS",
+              "LEAD_QUALIFICADO",
+              "AGUARDANDO_PAGAMENTO",
+              "PROCESSANDO_PAGAMENTO",
+              "NAO_VALIDADO",
+              "NAO_TERRORISTA",
+              "APROVADO_LISTAS_MERCADO",
+              "PEP_APROVADO",
+              "REENVIANDO_DOCUMENTOS",
+              "DOCUMENTOS_COMPLETOS",
+              "DOCUMENTOS_VALIDOS",
+              "DOCUMENTOS_AUTENTICOS",
+              "FICHA_FINANCEIRA_ACEITAVEL",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED",
+              "NAO_APROVADO",
+              "NAO_ELEGIVEL",
+              "CANCELADO"
+            ]
+          },
+          "formattedCpfCnpj": {
+            "type": "string"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "enum": [
+              "AGUARDANDO_LIBERACAO",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED"
+            ]
+          },
+          "statusBeforeBlockade": {
+            "type": "string",
+            "enum": [
+              "LEAD_PRE_QUALIFICADO",
+              "LEAD_QUALIFICADO_INCOMPLETO",
+              "DADOS_SOCIETARIOS_COMPLETOS",
+              "LEAD_QUALIFICADO",
+              "AGUARDANDO_PAGAMENTO",
+              "PROCESSANDO_PAGAMENTO",
+              "NAO_VALIDADO",
+              "NAO_TERRORISTA",
+              "APROVADO_LISTAS_MERCADO",
+              "PEP_APROVADO",
+              "REENVIANDO_DOCUMENTOS",
+              "DOCUMENTOS_COMPLETOS",
+              "DOCUMENTOS_VALIDOS",
+              "DOCUMENTOS_AUTENTICOS",
+              "FICHA_FINANCEIRA_ACEITAVEL",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED",
+              "NAO_APROVADO",
+              "NAO_ELEGIVEL",
+              "CANCELADO"
+            ]
+          },
+          "paymentStatusBeforeBlocked": {
+            "type": "string",
+            "enum": [
+              "AGUARDANDO_LIBERACAO",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED"
+            ]
+          }
+        }
+      },
+      "StoreHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "storeData": {
+            "$ref": "#/components/schemas/StoreData"
+          },
+          "registeredBy": {
+            "type": "string"
+          },
+          "initialStoreData": {
+            "type": "string"
+          },
+          "finalStoreData": {
+            "type": "string"
+          },
+          "initialBankInfo": {
+            "type": "string"
+          },
+          "finalBankInfo": {
+            "type": "string"
+          },
+          "initialStoreOwners": {
+            "type": "string"
+          },
+          "finalStoreOwners": {
+            "type": "string"
+          },
+          "formattedcreatedDate": {
+            "type": "string"
+          },
+          "historyType": {
+            "type": "string",
+            "enum": [
+              "ACEITACAO_INDICACAO",
+              "ALTERACAO_SISTEMA",
+              "ALTERACAO_CADASTRO_DADOS_OBRIGATORIOS_INFORMADOS",
+              "ALTERACAO_CADASTRO_ATUALIZACAO_DADOS",
+              "ALTERACAO_CADASTRO_ATIVADO_APOS_PRIMEIRA_VENDA",
+              "CADASTRO_INICIAL",
+              "VALIDACAO_CADASTRAL",
+              "DESATIVACAO_POR_INATIVADADE",
+              "ALTERACAO_LIMITES",
+              "ALTERACAO_DE_PLANO",
+              "CADASTRO_LIBERADO_USO",
+              "CADASTRO_LIBERADO_PAGAMENTO",
+              "BLOQUEIO_USO_SUSPEITA_FRAUDE",
+              "BLOQUEIO_USO_SOLICITACAO_LOJISTA",
+              "BLOQUEIO_USO_OUTROS",
+              "BLOQUEIO_PAGAMENTO_SUSPEITA_FRAUDE",
+              "BLOQUEIO_PAGAMENTO_SOLICITACAO_LOJISTA",
+              "BLOQUEIO_PAGAMENTO_DOMICILIO_BANCÁRIO_INCORRETO",
+              "BLOQUEIO_PAGAMENTO_OUTROS",
+              "BLOQUEIO_PAGAMENTO_ATUALIZACAO_DOCUMENTAL",
+              "BLOQUEIO_VENDAS_ATUALIZACAO_DOCUMENTAL",
+              "BLOQUEIO_VENDAS_CARTAO_DEVOLUCAO_DISPOSITIVO",
+              "BLACKLISTED",
+              "SOLICITACAO_CANCELAMENTO_LOJISTA",
+              "DESBLOQUEIO_USO",
+              "DESBLOQUEIO_PAGAMENTO",
+              "DESBLOQUEIO_VENDAS",
+              "OUTRO"
+            ]
+          },
+          "initialStatus": {
+            "type": "string",
+            "enum": [
+              "LEAD_PRE_QUALIFICADO",
+              "LEAD_QUALIFICADO_INCOMPLETO",
+              "DADOS_SOCIETARIOS_COMPLETOS",
+              "LEAD_QUALIFICADO",
+              "AGUARDANDO_PAGAMENTO",
+              "PROCESSANDO_PAGAMENTO",
+              "NAO_VALIDADO",
+              "NAO_TERRORISTA",
+              "APROVADO_LISTAS_MERCADO",
+              "PEP_APROVADO",
+              "REENVIANDO_DOCUMENTOS",
+              "DOCUMENTOS_COMPLETOS",
+              "DOCUMENTOS_VALIDOS",
+              "DOCUMENTOS_AUTENTICOS",
+              "FICHA_FINANCEIRA_ACEITAVEL",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED",
+              "NAO_APROVADO",
+              "NAO_ELEGIVEL",
+              "CANCELADO"
+            ]
+          },
+          "finalStatus": {
+            "type": "string",
+            "enum": [
+              "LEAD_PRE_QUALIFICADO",
+              "LEAD_QUALIFICADO_INCOMPLETO",
+              "DADOS_SOCIETARIOS_COMPLETOS",
+              "LEAD_QUALIFICADO",
+              "AGUARDANDO_PAGAMENTO",
+              "PROCESSANDO_PAGAMENTO",
+              "NAO_VALIDADO",
+              "NAO_TERRORISTA",
+              "APROVADO_LISTAS_MERCADO",
+              "PEP_APROVADO",
+              "REENVIANDO_DOCUMENTOS",
+              "DOCUMENTOS_COMPLETOS",
+              "DOCUMENTOS_VALIDOS",
+              "DOCUMENTOS_AUTENTICOS",
+              "FICHA_FINANCEIRA_ACEITAVEL",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED",
+              "NAO_APROVADO",
+              "NAO_ELEGIVEL",
+              "CANCELADO"
+            ]
+          },
+          "initialPaymentStatus": {
+            "type": "string",
+            "enum": [
+              "AGUARDANDO_LIBERACAO",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED"
+            ]
+          },
+          "finalPaymentStatus": {
+            "type": "string",
+            "enum": [
+              "AGUARDANDO_LIBERACAO",
+              "LIBERADO",
+              "BLOQUEADO",
+              "BLACKLISTED"
+            ]
+          }
+        }
+      },
+      "StoreUploadedDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requiredDocument": {
+            "$ref": "#/components/schemas/RegisterRequiredDocument"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "path": {
+            "type": "string"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TaxesAndFees": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "creditCardSaleFee": {
+            "type": "number"
+          },
+          "creditCardInstallmentsFee": {
+            "type": "number"
+          },
+          "creditCardAboveSixInstallmentsFee": {
+            "type": "number"
+          },
+          "paymentSlipFixedValue": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "paymentSlipPercentValue": {
+            "type": "number"
+          },
+          "prazoParaPagtoBoleto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "prazoParaPagtoCCAVista": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prazoParaPagtoCCParcelado": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plugCreditCardSaleFee": {
+            "type": "number"
+          },
+          "plugCreditCardInstallmentsFee": {
+            "type": "number"
+          },
+          "plugCreditCardAboveSixInstallmentsFee": {
+            "type": "number"
+          },
+          "plugCreditDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plugCreditInstallmentsDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pinpadCreditFee": {
+            "type": "number"
+          },
+          "pinpadCreditInstallmentsFee": {
+            "type": "number"
+          },
+          "pinpadCreditAboveSixInstallmentsFee": {
+            "type": "number"
+          },
+          "pinpadCreditDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pinpadCreditInstallmentsDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pinpadDebitFee": {
+            "type": "number"
+          },
+          "pinpadDebitDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pinpadCreditAntecipation": {
+            "type": "boolean"
+          },
+          "pinPadCreditInstallmentAditionFee": {
+            "type": "number"
+          },
+          "pinpadInterestInstallmentAdition": {
+            "type": "number"
+          },
+          "pinpadCreditInterestInstallmentsDaysToPay": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ValidationProcess": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "documentsProcessId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "riskProcessId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "requestDocsKayakoTicket": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "DocumentAuthenticity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registeredBy": {
+            "type": "string"
+          },
+          "rgReadable": {
+            "type": "boolean"
+          },
+          "rgAuthenticityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rgBookOfOrigin": {
+            "type": "boolean"
+          },
+          "rgValidSignature": {
+            "type": "boolean"
+          },
+          "rgBrSafePath": {
+            "type": "string"
+          },
+          "cpfReadable": {
+            "type": "boolean"
+          },
+          "cpfValid": {
+            "type": "boolean"
+          },
+          "cpfReceipt": {
+            "type": "string"
+          },
+          "cnhReadable": {
+            "type": "boolean"
+          },
+          "cnhValidSignature": {
+            "type": "boolean"
+          },
+          "cnhAuthenticityLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cnhBrSafePath": {
+            "type": "string"
+          }
+        }
+      },
+      "SpcSerasaValidation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeFilePath": {
+            "type": "string"
+          },
+          "storeCheckStatus": {
+            "type": "string",
+            "enum": [
+              "NO_PENDENCIES",
+              "ACCEPTABLE_PENDENCIES",
+              "NOT_ACCEPTABLE_PENDENCIES"
+            ]
+          },
+          "ownerFilePath": {
+            "type": "string"
+          },
+          "ownerCheckStatus": {
+            "type": "string",
+            "enum": [
+              "NO_PENDENCIES",
+              "ACCEPTABLE_PENDENCIES",
+              "NOT_ACCEPTABLE_PENDENCIES"
+            ]
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registeredBy": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "DocumentUpdateValidationProcess": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "documentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "workflowId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "CLOSED"
+            ]
+          },
+          "storeBlocked": {
+            "type": "boolean"
+          },
+          "isOwner": {
+            "type": "boolean"
+          }
+        }
+      },
+      "DocumentUpdateValidation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "storeDataId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "documentUpdateValidationProcess": {
+            "$ref": "#/components/schemas/DocumentUpdateValidationProcess"
+          },
+          "documentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "documentRequiredName": {
+            "type": "string"
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registeredBy": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "DocumentRequirement": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "instruction": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
